@@ -22,3 +22,15 @@ function changeWord() {
 
   initialWord = (initialWord == arrayOfWord.length - 1) ? 0 : initialWord+1;
 }
+
+function animateLetterOut(initialWord, i) {
+  setTImeout( => () {
+    initialWord[i].className = 'letter out'
+  }, i*80);
+}
+
+function animateLetterIn(initialWord, i) {
+  setTImeout( => () {
+    initialWord[i].className = 'letter in'
+  }, 340+(i*80));
+}
