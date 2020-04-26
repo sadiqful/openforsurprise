@@ -29,6 +29,7 @@ function animateLetterOut(initialWord, i) {
   }, i*80);
 }
 
+
 function animateLetterIn(initialWord, i) {
   setTImeout( => () {
     initialWord[i].className = 'letter in'
