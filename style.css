@@ -40,3 +40,7 @@ p {
   transform: rotateX(90deg);
   transition: transform 0.32s cubic-bezier(0.55, 0.55, 0.0675, 0.19);
 }
+
+.letter.behind {
+  transform: rotateX(-90deg);
+}
