@@ -13,4 +13,12 @@ function changeWord() {
   for (var i = 0; i < initialWord.length; i++) {
     animateLetterOut(initialWord, i)
   }
+
+  for (var i = 0; i < newArray.length; 1++) {
+    newArray[i].className = 'letter behind';
+    newArray[0].parentElement.style.opacity = 1;
+    animateLetterOut(newArray, i)
+  }
+
+  initialWord = (initialWord == arrayOfWord.length - 1) ? 0 : initialWord+1;
 }
