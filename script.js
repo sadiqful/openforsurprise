@@ -35,3 +35,18 @@ function animateLetterIn(initialWord, i) {
     initialWord[i].className = 'letter in'
   }, 340+(i*80));
 }
+
+function spliLetters(word) {
+  var content = word.innerHTML;
+  word.innerHTML = '';
+  var letters = [];
+  for (var i = 0; i < content.length; i++) {
+    var letter = document.createElement('span');
+    letter.className = 'letter';
+    letter.innerHTML = content.charAt(i);
+    word.appendChild(letter);
+    letters.push(letter);
+  }
+
+  arrayOfWord.push(letters);
+}
