@@ -35,3 +35,8 @@ p {
   transform: translateZ()25px;
   transform-origin: 50% 50% 25px;
 }
+
+.letter.out {
+  transform: rotateX(90deg);
+  transition: transform 0.32s cubic-bezier(0.55, 0.55, 0.0675, 0.19);
+}
