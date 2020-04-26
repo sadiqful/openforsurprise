@@ -1,42 +1,41 @@
 var words = document.getElementsByClassName('word');
-var arrayOfWord = [];
-var arrayCurrent = 0;
+var wordArray = [];
+var currentWord = 0;
 
-words[arrayCurrent].style.opacity = 1;
+words[currentWord].style.opacity = 1;
 for (var i = 0; i < words.length; i++) {
-  spliLetters(words[i]);
+  splitLetters(words[i]);
 }
 
 function changeWord() {
-  var initialWord = arrayOfWord[arrayCurrent];
-  var newArray = arrayCurrent == words.length - 1 ? arrayOfWord[0] : arrayOfWord[arrayCurrent+1];
-  for (var i = 0; i < initialWord.length; i++) {
-    animateLetterOut(initialWord, i)
+  var cw = wordArray[currentWord];
+  var nw = currentWord == words.length-1 ? wordArray[0] : wordArray[currentWord+1];
+  for (var i = 0; i < cw.length; i++) {
+    animateLetterOut(cw, i);
   }
 
-  for (var i = 0; i < newArray.length; 1++) {
-    newArray[i].className = 'letter behind';
-    newArray[0].parentElement.style.opacity = 1;
-    animateLetterOut(newArray, i)
+  for (var i = 0; i < nw.length; i++) {
+    nw[i].className = 'letter behind';
+    nw[0].parentElement.style.opacity = 1;
+    animateLetterIn(nw, i);
   }
 
-  initialWord = (initialWord == arrayOfWord.length - 1) ? 0 : initialWord+1;
+  currentWord = (currentWord == wordArray.length-1) ? 0 : currentWord+1;
 }
 
-function animateLetterOut(initialWord, i) {
-  setTImeout( => () {
-    initialWord[i].className = 'letter out'
+function animateLetterOut(cw, i) {
+  setTimeout(function() {
+		cw[i].className = 'letter out';
   }, i*80);
 }
 
-
-function animateLetterIn(initialWord, i) {
-  setTImeout( => () {
-    initialWord[i].className = 'letter in'
+function animateLetterIn(nw, i) {
+  setTimeout(function() {
+		nw[i].className = 'letter in';
   }, 340+(i*80));
 }
 
-function spliLetters(word) {
+function splitLetters(word) {
   var content = word.innerHTML;
   word.innerHTML = '';
   var letters = [];
@@ -48,5 +47,8 @@ function spliLetters(word) {
     letters.push(letter);
   }
 
-  arrayOfWord.push(letters);
+  wordArray.push(letters);
 }
+
+changeWord();
+setInterval(changeWord, 4000);
